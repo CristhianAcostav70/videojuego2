@@ -35,7 +35,7 @@ public class Practica1PG implements GLEventListener {
     meza mes;
     silla sill;
     
-    silla dis;
+    silla dos;
     mueblesjar mys1;
 
     public static void main(String[] args) {
