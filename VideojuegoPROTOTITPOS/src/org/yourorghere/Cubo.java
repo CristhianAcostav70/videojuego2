@@ -5,6 +5,7 @@
  */
 package org.yourorghere;
 
+import com.sun.opengl.util.texture.Texture;
 import javax.media.opengl.GL;
 
 /**
@@ -14,61 +15,116 @@ import javax.media.opengl.GL;
 public class Cubo {
 
     GL gl;
+    Material material;
+    Texture tex;
 
-    public Cubo(GL gl1) {
+    public Cubo(GL gl) {
+        this.gl = gl;
+    }
+
+    public Cubo(GL gl, Material material, Texture tex) {
+        this.gl = gl;
+        this.material = material;
+        this.tex = tex;
+    }
+
+    public Cubo(GL gl, Texture tex) {
+        this.gl = gl;
+        this.tex = tex;
+    }
+    
+
+    public Cubo(GL gl1, Material mat) {
         this.gl = gl1;
+        this.material=mat;
     }
 
     public void draw() {
-       //FRONT
-        gl.glBegin(GL.GL_QUADS);
+        //FRONT
         
-        gl.glVertex3f(-1.0f, 1.0f, 1.0f);
-        gl.glVertex3f(1.0f, 1.0f, 1.0f);
-        gl.glVertex3f(1.0f, -1.0f, 1.0f);
-        gl.glVertex3f(-1.0f, -1.0f, 1.0f);
-        gl.glEnd();
-        //BACK
-        gl.glBegin(GL.GL_QUADS);
+        if (material !=null){
+        material.activar();
+        }
         
-        gl.glVertex3f(-1.0f, 1.0f, -1.0f);
-        gl.glVertex3f(1.0f, 1.0f, -1.0f);
-        gl.glVertex3f(1.0f, -1.0f, -1.0f);
-        gl.glVertex3f(-1.0f, -1.0f, -1.0f);
+
+        if(tex!=null){
+         
+        tex.enable();
+        tex.bind();
+        }
+        //material.activar();
+         gl.glBegin(gl.GL_QUADS);
+        gl.glNormal3f(0, 0, -1);
+        gl.glTexCoord2f(0,0);
+        gl.glVertex3f(-1, -1, -1);
+        gl.glTexCoord2f(0,1);
+        gl.glVertex3f(-1, 1, -1);
+        gl.glTexCoord2f(1,1);
+        gl.glVertex3f(1, 1, -1);
+        gl.glTexCoord2f(1,0);
+        gl.glVertex3f(1, -1, -1);
+
+        //Front
+//        gl.glColor3f(1.0f, 1.0f, 0.5f);
+        gl.glNormal3f(0, 0, 1);
+        gl.glTexCoord2f(0,0);
+        gl.glVertex3f(-1, -1, 1);
+        gl.glTexCoord2f(0,1);
+        gl.glVertex3f(-1, 1, 1);
+        gl.glTexCoord2f(1,1);
+        gl.glVertex3f(1, 1, 1);
+        gl.glTexCoord2f(1,0);
+        gl.glVertex3f(1, -1, 1);
+
+        //Left
+//        gl.glColor3f(0.0f, 0.0f, 1.0f);
+        gl.glNormal3f(-1, 0, 0);
+        gl.glTexCoord2f(0,0);
+        gl.glVertex3f(-1, -1, -1);
+        gl.glTexCoord2f(0,1);
+        gl.glVertex3f(-1, 1, -1);
+        gl.glTexCoord2f(1,1);
+        gl.glVertex3f(-1, 1, 1);
+        gl.glTexCoord2f(1,0);
+        gl.glVertex3f(-1, -1, 1);
+
+        //Right
+//        gl.glColor3f(0.0f, 1.0f, 0.0f);
+        gl.glNormal3f(1, 0, 0);
+        gl.glTexCoord2f(0,0);
+        gl.glVertex3f(1, -1, -1);
+        gl.glTexCoord2f(0,1);
+        gl.glVertex3f(1, 1, -1);
+        gl.glTexCoord2f(1,1);
+        gl.glVertex3f(1, 1, 1);
+        gl.glTexCoord2f(1,0);
+        gl.glVertex3f(1, -1, 1);
+
+        //Top
+//        gl.glColor3f(0.0f, 1.0f, 1.0f);
+        gl.glNormal3f(0, 1, 0);
+        gl.glTexCoord2f(0,0);
+        gl.glVertex3f(-1, 1, 1);
+        gl.glTexCoord2f(0,1);
+        gl.glVertex3f(-1, 1, -1);
+        gl.glTexCoord2f(1,1);
+        gl.glVertex3f(1, 1, -1);
+        gl.glTexCoord2f(1,0);
+        gl.glVertex3f(1, 1, 1);
+
+        //Bottom
+//        gl.glColor3f(1.0f, 0.0f, 1.0f);
+        gl.glNormal3f(0, -1, 0);
+        gl.glVertex3f(-1, -1, 1);
+        gl.glVertex3f(-1, -1, -1);
+        gl.glVertex3f(1, -1, -1);
+        gl.glVertex3f(1, -1, 1);
         gl.glEnd();
-        //lEFT
-        gl.glBegin(GL.GL_QUADS);
+        
+        if(tex!=null){
+        tex.disable();
+        
+        }
        
-        gl.glVertex3f(-1.0f, 1.0f, -1.0f);
-        gl.glVertex3f(-1.0f, 1.0f, 1.0f);
-        gl.glVertex3f(-1.0f, -1.0f, 1.0f);
-        gl.glVertex3f(-1.0f, -1.0f, -1.0f);
-        gl.glEnd();
-        //RIGHT
-        gl.glBegin(GL.GL_QUADS);
-       
-        gl.glVertex3f(1.0f, 1.0f, -1.0f);
-        gl.glVertex3f(1.0f, 1.0f, 1.0f);
-        gl.glVertex3f(1.0f, -1.0f, -1.0f);
-        gl.glVertex3f(1.0f, -1.0f, 1.0f);
-        gl.glEnd();
-        //TOP
-        gl.glBegin(GL.GL_QUADS);
-        
-        gl.glVertex3f(-1.0f, 1.0f, -1.0f);
-        gl.glVertex3f(1.0f, 1.0f, -1.0f);
-        gl.glVertex3f(1.0f, 1.0f, 1.0f);
-        gl.glVertex3f(-1.0f, 1.0f, 1.0f);
-        gl.glEnd();
-        //BOTTOM
-        gl.glBegin(GL.GL_QUADS);
-      
-        gl.glVertex3f(-1.0f, -1.0f, -1.0f);
-        gl.glVertex3f(1.0f, -1.0f, -1.0f);
-        gl.glVertex3f(1.0f, -1.0f, 1.0f);
-        gl.glVertex3f(-1.0f, -1.0f, 1.0f);
-        gl.glEnd();
-        
-        
     }
 }

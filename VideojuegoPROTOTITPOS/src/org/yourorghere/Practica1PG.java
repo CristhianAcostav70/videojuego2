@@ -66,7 +66,7 @@ public class Practica1PG implements GLEventListener {
     public static HashMap<String, Material> material;
     public static HashMap<String, Texture> textura;
 
-    public static void main() {
+    public static void main(String[] args) {
         Frame frame = new Frame("Simple JOGL Application");
         GLCanvas canvas = new GLCanvas();
 

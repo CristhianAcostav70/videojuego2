@@ -20,13 +20,13 @@ public class arbol {
 
     public arbol(GL gl1) {
         this.gl = gl1;
-        copa = new piramide(gl);
-        hojas = new piramide(gl);
-        tallo = new Cubo(gl);
+        copa = new piramide(gl,Practica1PG.textura.get("h1"));
+        hojas = new piramide(gl,Practica1PG.textura.get("h2"));
+        tallo = new Cubo(gl,Practica1PG.textura.get("tallo"));
     }
 
     public void draw() {
-        gl.glColor3f(0.6f, 0.4f, 0.1f);
+       // gl.glColor3f(0.6f, 0.4f, 0.1f);
         //gl.glPushMatrix();
        // gl.glTranslatef(0, 0, 0);
         gl.glScalef(0.2f, 0.5f, 0.2f);
@@ -36,7 +36,7 @@ public class arbol {
         // gl.glTranslatef(0,0.5f,0.1f);
 
         gl.glPushMatrix();
-        gl.glColor3f(0.6f, 0.7f, 0.3f);
+       // gl.glColor3f(0.6f, 0.7f, 0.3f);
         gl.glTranslatef(0f, 1f, 0f);
         gl.glScalef(2.0f, 1.5f, 2.0f);
         // gl.glScalef(0.2f,0.2f, 1f);
@@ -44,7 +44,7 @@ public class arbol {
         gl.glPopMatrix();
 
         gl.glPushMatrix();
-        gl.glColor3f(0.6f, 0.7f, 0.1f);
+      //  gl.glColor3f(0.6f, 0.7f, 0.1f);
         gl.glTranslatef(0f, 1.5f, 0f);
         gl.glScalef(2.0f, 1.5f, 2.0f);
         // gl.glScalef(0.2f,0.2f, 1f);
