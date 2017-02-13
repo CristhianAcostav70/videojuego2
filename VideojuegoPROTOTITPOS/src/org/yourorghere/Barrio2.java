@@ -12,10 +12,14 @@ import javax.media.opengl.GL;
  *
  * @author crisspc
  */
+
+/**\brief Constructor de la clase Barrio2 */
 public class Barrio2 {
 
     GL gl;
 //    Casa casa1;
+    
+    ///Creamos un arreglo de casas donde vamos a guardar, las casas y sus respetivas posiciones.
     ArrayList<Casa> casas = new ArrayList();
     float[] posx = new float[13];
     float[] posy = new float[13];

@@ -26,13 +26,18 @@ import javax.swing.JOptionPane;
 
 /**
  * Practica1PG.java <BR>
- * author: Brian Paul (converted to Java by Ron Cemer and Sven Goethel)
+ * author:CrsithianAcosta 
  * <P>
  *
- * This version is equal to Brian Paul's version 1.2 1999/10/21
  */
-public class Practica1PG implements GLEventListener {
 
+
+public class Practica1PG implements GLEventListener {
+    
+    /**
+     * @brief Declaramos una las variables y objetos qeu vamos autilizar
+     * 
+     */
     GL gl;
     float i = 0;
     int camaracr;
@@ -52,6 +57,8 @@ public class Practica1PG implements GLEventListener {
     meza mes;
     silla sill;
     mueblesjar mys1;
+    
+    ///Los objetos son publicos para poder acceder desde cualqueir clase
     public static jugador jugador;
     public static Enemigo enemigo;
 
@@ -62,7 +69,7 @@ public class Practica1PG implements GLEventListener {
     int time = 0;
     int vidas = 4;
 
-    //  Material material;
+    /// Declaramos los hashMap donde se almacenaran Materiales y texturas;
     public static HashMap<String, Material> material;
     public static HashMap<String, Texture> textura;
 
@@ -105,7 +112,8 @@ public class Practica1PG implements GLEventListener {
         GL gl = drawable.getGL();
         GLU glu = new GLU();
         drawable.setGL(new DebugGL(drawable.getGL()));
-
+        
+        /// creamos los arreglos qeu definen los parametros de cada material
         float[] ambiental = {0.5f, 0.3f, 0, 1.0f};
         float[] diffuse = {0.5f, 0.3f, 0, 1.0f};
         float[] especular = {0.5f, 0.3f, 0, 1.0f};
@@ -149,7 +157,8 @@ public class Practica1PG implements GLEventListener {
          float[] ambiental10 = {0f,0f, 0f, 0f};
         float[] diffuse10 = {0f, 0f, 0f, 0f};
         float[] especular10 = {0f,0f, 0f, 0f};
-
+        
+        /// Definimos los objetos de tipo texuras que se inicializan con 0
         float shininess;
         Texture paredL = null;
         Texture loco = null;
@@ -166,7 +175,8 @@ public class Practica1PG implements GLEventListener {
         Texture cj = null;
         Texture poli = null;
         Texture mesa= null;
-
+        
+        /// Asiganmos las texuras y lo guardamos en el hashMap correspondiente
         textura = new HashMap<String, Texture>();
         try {
             paredL = TextureIO.newTexture(new File("pared.jpg"), false);
@@ -307,7 +317,7 @@ public class Practica1PG implements GLEventListener {
 
         textura.put("mesa", mesa);
 
-      
+        /// Asiganamos los materiales a los hashMap correspondientes
         material = new HashMap<String, Material>();
         Material madera = new Material(gl, ambiental, diffuse, especular, 1);
         material.put("madera", madera);
@@ -338,7 +348,8 @@ public class Practica1PG implements GLEventListener {
         gl.glEnable(GL.GL_LIGHT2);
         gl.glEnable(GL.GL_LIGHT3);
         gl.glEnable(GL.GL_TEXTURE_2D);
-
+        
+        ///instanciamos los objetos declarados.
         bar = new Barrio2(gl);
         moneda = new Monedas(gl);
 
@@ -358,17 +369,20 @@ public class Practica1PG implements GLEventListener {
         jugador = new jugador(gl, 2, 0, -3, 0.05f, 90);
         enemigo = new Enemigo(gl, 6, 0, 5, 0.1f, 90);
 
-
+        //Creamos los arreglos qeu son componenetes de la luz que vamos a usar.
         float[] position = {0.0f, 5.0f, 1.0f, 1.0f};  
         float[] specularc = {1f, 1f, 1f, 1.0f};
         float[] ambient = {1f, 1f, 1f, 1.0f};
         float[] diffusec = {1f, 1f, 1f, 1.0f};
+        // creamos una luz direccional
         luz0 = new Light(gl, 5, 5, 0, ambient, diffusec, specularc, true, GL.GL_LIGHT0);
+        ///creamos una luz puntal.
         luz1 = new SpotLight(gl, 0, 0, 4, ambient, diffusec, specularc, true, GL.GL_LIGHT1);
-
+        
+        ///Instanciomos la clase manejador de teclado
         ManejadorTeclado mteclado = new ManejadorTeclado(jugador, this, luz0, luz1);
         drawable.addKeyListener(mteclado);
-
+        ///Instanciamos la calse manejadro de raton
         ManejadorRaton mlistener = new ManejadorRaton();
         mlistener.init(drawable, jugador);
 
@@ -408,22 +422,24 @@ public class Practica1PG implements GLEventListener {
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
     
         gl.glLoadIdentity();
-
+        ///definimos los diferentes tipos de camaras a usar dependiendo la tecla persionada.
         switch (camaracr) {
             case 1:
+                ///cara que mira al personaje desde un punto fijo.
                 glu.gluLookAt(0, 3, 3, jugador.x, jugador.y, jugador.z, 0, 1, 0);
                 break;
             case 2:
+                /// camara que mira un punto fijo, des un punto fijo.
                 glu.gluLookAt(jugador.x, jugador.y, jugador.z, jugador.x + Math.cos(jugador.angley), jugador.y + Math.cos(jugador.anglex), jugador.z + Math.sin(jugador.angley), 0, 1, 0);
                
                 break;
             case 3:
-
+                ///camara en primera persona
                 glu.gluLookAt(jugador.x + Math.cos(jugador.angley + Math.PI) * 3, jugador.y + Math.cos(jugador.anglex) + 1, jugador.z + Math.sin(jugador.angley + Math.PI) * 3, jugador.x, jugador.y, jugador.z, 0, 1, 0);
                 break;
 
             case 9:
-
+                ///Camara que perigue al personaje.
                 glu.gluLookAt(0, 17, 0, 6, 0, 0, 0, 1, 0);
                 break;
 
@@ -431,6 +447,7 @@ public class Practica1PG implements GLEventListener {
                 break;
         }
 
+        ///graficamos los objetos instaciados.
         gl.glPushMatrix();
         moneda.draw();
         gl.glPopMatrix();
@@ -497,6 +514,7 @@ public class Practica1PG implements GLEventListener {
         mys1.draw();
         gl.glPopMatrix();
 
+        
         gl.glFlush();
         switch (interruptor) {
             case 4:

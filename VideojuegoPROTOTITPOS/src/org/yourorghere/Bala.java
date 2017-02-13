@@ -11,6 +11,8 @@ import javax.media.opengl.GL;
  *
  * @author crisspc
  */
+
+/**\brief Clase bala implementa la interfaz Movil*/
 public class Bala implements Movil{
     float x,y,z,vel,angley;
     Cubo cuerpo;
@@ -18,6 +20,7 @@ public class Bala implements Movil{
     GL gl;
     int cont;
 
+    /**\brief Constructor de la clase Bala */
     public Bala(float x, float y, float z,float vel, float angley, GL gl) {
         this.x = x;
         this.y = y;
@@ -32,11 +35,15 @@ public class Bala implements Movil{
         
     }
     
+    /**\brief Metodo avanzar  */
       public void avanzar() {
+       ///Método para qeu la Bala no se qeude estàtica sino que avance en cada instante de tiempo.
        this.x += Math.cos(this.angley)*vel;
         this.z += Math.sin(this.angley)*vel;
     }
       
+      
+      /// metodo Darw para dibujar la bala.
       public void draw(){
       gl.glPushMatrix();
       gl.glTranslatef(x, y, z);
@@ -45,24 +52,26 @@ public class Bala implements Movil{
       gl.glPopMatrix();
       }
       
-      
+      /// Metodo actuar qeu utilizar el metodo avanzar.
       public void actuar(){
       avanzar();
       cont++;
       }
 
+      /// metodo getX perteneciente a la interfaz
     public float getX() {
         return x;
     }
-
+    /// metodo getY perteneciente a la interfaz
     public float getY() {
         return y;
     }
-
+    /// metodo getZ perteneciente a la interfaz
     public float getZ() {
        return z;
     }
 
+    /// metodo getWidth perteneciente a la interfaz
     public float getWidth() {
        return 0.3f;
     }
