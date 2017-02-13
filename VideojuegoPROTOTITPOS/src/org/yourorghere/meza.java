@@ -17,13 +17,14 @@ public class meza {
     Cubo pata;
     Cubo base;
 
+    ///decalramos las partes de las meza con su respectivo meterial y textura.
     public meza(GL gl1) {
         this.gl=gl1;
         mes=new Cubo(gl,Practica1PG.material.get("blanco"),Practica1PG.textura.get("mesa"));
         pata=new Cubo(gl,Practica1PG.material.get("negro"));
         base=new Cubo(gl,Practica1PG.material.get("blanco"),Practica1PG.textura.get("mesa"));
     }
-    
+    ///Método draw para dibujar la meza
     public void draw(){
         
         //gl.glColor3f(1.0f, 0.9f, 0.2f);

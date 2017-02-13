@@ -15,6 +15,8 @@ import javax.media.opengl.GLEventListener;
  *
  * @author LABCOM
  */
+
+/**\brief Clase ManejadorRaton implementa la interfaz GLEventListener, MouseListener,MouseMotionListener*/
 public class ManejadorRaton implements GLEventListener, MouseListener,MouseMotionListener  {
     
     
@@ -69,6 +71,7 @@ public class ManejadorRaton implements GLEventListener, MouseListener,MouseMotio
        
     }
 
+    ///Capturamos los movimientos del mouse
     public void mouseMoved(MouseEvent e) {
         float x=e.getX();
         float y=e.getY();

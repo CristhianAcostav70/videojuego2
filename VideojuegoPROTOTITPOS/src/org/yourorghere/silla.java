@@ -19,8 +19,10 @@ public class silla {
     Cubo pata1;
     Cubo basp;
     
+    /**\brief metodo Constructor de la clase Silla*/
     public silla(GL gl1){
 
+        ///declaramos cada parte de la silla con su respetivo material y textura-
         this.gl=gl1;
         base= new Cubo(gl,Practica1PG.material.get("blanco"),Practica1PG.textura.get("mesa"));
         espaldar =new Cubo(gl,Practica1PG.material.get("blanco"),Practica1PG.textura.get("mesa"));
@@ -30,31 +32,30 @@ public class silla {
         
        
 }
+    ///Metodo para graficar las sillas
    public void draw(){
        
        
-       // gl.glColor3f(0.6f, 0.7f, 0.4f);
+       
         gl.glPushMatrix();
         gl.glTranslatef(0.5f, 0.2f, 0);
         gl.glScalef(0.05f, 0.2f, 0.5f);
         espaldar.draw();
         gl.glPopMatrix();
        
-             
-       // gl.glColor3f(0.6f, 0.7f, 0.4f);
+      
         gl.glPushMatrix();
         gl.glScalef(0.5f, 0.05f, 0.5f);
         base.draw();
         gl.glPopMatrix();
         
-      //  gl.glColor3f(0.5f, 0.5f, 0.5f);
+     
         gl.glPushMatrix();
         gl.glTranslatef(0, -0.2f, 0);
         gl.glScalef(0.09f, 0.2f, 0.09f);
         pata1.draw();
         gl.glPopMatrix();
-        
-       // gl.glColor3f(0.5f, 0.5f, 0.5f);
+      
         gl.glPushMatrix();
         gl.glTranslatef(0, -0.4f, 0);
         gl.glScalef(0.2f, 0.02f, 0.2f);

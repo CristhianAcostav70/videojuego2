@@ -31,6 +31,7 @@ public class persona {
         braso2 = new Cubo(gl);
     }
 
+    ///Metodo para graficar las personas.
     public void draw() {
 
         gl.glColor3f(1.0f, 1.0f, 0.7f);
@@ -66,20 +67,7 @@ public class persona {
         pierna2.draw();
         gl.glPopMatrix();
 
-        /*
-      
-      
      
-      
-      /*
-      
-     
-      
-      
-     
-      
-      
-         */
     }
 
 }

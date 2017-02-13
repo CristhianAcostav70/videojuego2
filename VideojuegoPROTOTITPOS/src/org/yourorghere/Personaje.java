@@ -12,6 +12,8 @@ import javax.media.opengl.GL;
  *
  * @author LABCOM
  */
+
+/**\breif Clase personaje implemente la interfaz Movil*/
 public class Personaje implements Movil{
 
     GL gl;
@@ -21,12 +23,10 @@ public class Personaje implements Movil{
     ArrayList<Bala> balas = new ArrayList();
     public boolean alive=true;
 
+    /**\brief Constructo de la clase personaje*/
     public Personaje(GL gl1, float x, float y, float z, float v, float a) {
         this.gl = gl1;
-//        float[] mambient = {0.5f, 0.5f, 0.5f, 1.0f};
-//        float[] mspecular = {0.5f, 0.5f, 0.5f, 1.0f};
-//        float[] mdiffuse = {0.5f, 0.5f, 0.5f, 1.0f};
-//        Material cemento = new Material(gl,mambient,mspecular,mdiffuse,0);
+
         this.x = x;
         this.y = y;
         this.z = z;
@@ -41,7 +41,9 @@ public class Personaje implements Movil{
 
     }
 
+        /**\brief metodo Draw para grafica el personaje*/
     public void draw() {
+        ///si el personaje esta vivo se gráfica
         if(this.alive){
 
         gl.glPushMatrix();
@@ -74,6 +76,7 @@ public class Personaje implements Movil{
 
     }
 
+    ///El método actuar no indica el numero de balas y como se mueve
     public void actuar() {
         ArrayList<Bala> balast = new ArrayList();
         for (Bala bala : balas) {
@@ -90,6 +93,7 @@ public class Personaje implements Movil{
         
     }
     
+    ///Método no actuar hace que las balas dejen de mover
     public void noactuar() {
      ArrayList<Bala> balast = new ArrayList();
         for (Bala bala : balas) {
@@ -109,18 +113,18 @@ public class Personaje implements Movil{
     
     
 
+    ///metodo avanzar mueve la bala en cada instante de tiempo con una velocidad determinada
     public void avanzar() {
         this.x += Math.cos(this.angley) * vel;
         this.z += Math.sin(this.angley) * vel;
-        
-       // this.y += Math.cos(this.anglex) * vel;
+      
 
     }
 
     public void retro() {
         this.x -= Math.cos(this.angley) * vel;
         this.z -= Math.sin(this.angley) * vel;
-       // this.y -= Math.cos(this.anglex) * vel;
+      
 
     }
 
@@ -146,6 +150,8 @@ public class Personaje implements Movil{
         balas.remove(new Bala(x,y,z,0.5f,angley,gl));
     }
 
+    
+    /// implementamos los metodos de la interfaz.
     public float getX() {
        return x;
     }

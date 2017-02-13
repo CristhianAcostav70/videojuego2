@@ -15,16 +15,18 @@ import javax.media.opengl.GL;
 public class Condominios2 {
     
      GL gl;
-//    Casa casa1;
+///Creamos un arreglo de edificios donde vamos a guardar, los edificios y sus respetivas posiciones.
     ArrayList<edificio> edificios = new ArrayList();
     float[] posx = new float[13];
     float[] posy = new float[13];
     float[] posz = new float[13];
     float[] angley = new float[13];
 
+    /**\brief Constructor de la clase Condominios2 */
     public Condominios2(GL gl) {
+        /**\param gl objeto de la libreria OpenGl*/
         this.gl = gl;
-        
+         /// colocamos las posiciones en cada arreglo. Que asignaremos a las casas.
         posx[0] = 0.5f;
         posx[1] = 3.5f;
         posx[2] = 6.5f;
@@ -85,13 +87,15 @@ public class Condominios2 {
         angley[10] = 180;
         angley[11] = 180;
         angley[12] = 180;
-        
+        ///recorremoas las posicones de los arreglos y los guardamos como atributos del objeto edificio en el arreglo.
         for (int i = 0; i < 13; i++) {
             edificios.add(new edificio(gl, posx[i], posy[i], posz[i], angley[i]));
 
         }
     }
+    /**\brief Método para dibujar los edificios*/
     public void draw() {
+        ///Recorremos el arreglo de edificios para graficárlas.
         for (edificio edificio : edificios) {
             gl.glPushMatrix();
             gl.glTranslatef(edificio.x, edificio.y, edificio.z);

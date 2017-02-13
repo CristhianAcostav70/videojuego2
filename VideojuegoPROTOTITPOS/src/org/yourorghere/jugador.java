@@ -11,6 +11,8 @@ import javax.media.opengl.GL;
  *
  * @author LABCOM
  */
+
+/**\brief Clase jugador extiende de la clase personaje*/
 public class jugador extends Personaje {
 
     public jugador(GL gl1, float x, float y, float z, float v, float a) {
@@ -18,6 +20,9 @@ public class jugador extends Personaje {
     }
 
 
+    ///se reescriben los metodos de la calse mas general-
+    
+    ///declaramos las colisiones
     @Override
     public void avanzar() {
         this.x += Math.cos(this.angley) * vel;

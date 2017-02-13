@@ -43,7 +43,7 @@ public class Bala implements Movil{
     }
       
       
-      /// metodo Darw para dibujar la bala.
+      ///Método Draw para dibujar la bala.
       public void draw(){
       gl.glPushMatrix();
       gl.glTranslatef(x, y, z);
@@ -58,15 +58,15 @@ public class Bala implements Movil{
       cont++;
       }
 
-      /// metodo getX perteneciente a la interfaz
+      /// método getX perteneciente a la interfaz
     public float getX() {
         return x;
     }
-    /// metodo getY perteneciente a la interfaz
+    /// método getY perteneciente a la interfaz
     public float getY() {
         return y;
     }
-    /// metodo getZ perteneciente a la interfaz
+    /// método getZ perteneciente a la interfaz
     public float getZ() {
        return z;
     }

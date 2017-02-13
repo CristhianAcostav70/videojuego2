@@ -11,20 +11,26 @@ import javax.media.opengl.GL;
  *
  * @author LABCOM
  */
-public class Enemigo extends Personaje{
-    
-   Cubo cuerpo;
+/*** \brief Clase enemigo extiende(hereada) de la calse Personaje*/
+public class Enemigo extends Personaje {
+
+    Cubo cuerpo;
     piramide cabeza;
 
     public Enemigo(GL gl1, float x, float y, float z, float v, float a) {
+        /// heredamos los atributos de la clase mas general.
         super(gl1, x, y, z, v, a);
-        
-        cuerpo = new Cubo(gl, Practica1PG.material.get("blanco"),Practica1PG.textura.get("poli"));
-        cabeza = new piramide(gl, Practica1PG.material.get("blanco"),Practica1PG.textura.get("bala"));
-        
+
+        cuerpo = new Cubo(gl, Practica1PG.material.get("blanco"), Practica1PG.textura.get("poli"));
+        cabeza = new piramide(gl, Practica1PG.material.get("blanco"), Practica1PG.textura.get("bala"));
+
     }
-    
- public void draw() {
+
+    /**
+     * \brief Método para dibujar El enemigo
+     */
+    public void draw() {
+        ///condición, si el enemigo esta vivo graficar-
         if (this.alive) {
 
             gl.glPushMatrix();
@@ -42,7 +48,7 @@ public class Enemigo extends Personaje{
             gl.glColor3f(1.0f, 0.0f, 0.0f);
             gl.glPushMatrix();
             // gl.glTranslatef(0.0f, 0.5f, 0.1f);
-             gl.glScalef(0.5f, 0.5f, 0.5f);;
+            gl.glScalef(0.5f, 0.5f, 0.5f);;
             gl.glRotatef(90, 1, 0, 0);
             cabeza.draw();
             gl.glPopMatrix();
@@ -55,20 +61,19 @@ public class Enemigo extends Personaje{
         }
 
     }
-    
-    
-    
-    
-    
-    public void actuar(){
-     super.actuar();
-     angley=(float) getAngle(Practica1PG.jugador);
-     avanzar();
-     
-     if ((mismetodos.distance(this,Practica1PG.jugador)<3)&(Math.random()>0.97)){
-     disparar();
-     }
-    
+
+    /*** \Método acutar*/
+    public void actuar() {
+        ///hereamdos el método y lo sobreescribimos.
+        super.actuar();
+        angley = (float) getAngle(Practica1PG.jugador);
+        avanzar();
+
+        ///Disparar cuando el enemigo este entre 3 y  0.97 unidades de distancia. para qeu sea un valor aleatorio.
+        if ((mismetodos.distance(this, Practica1PG.jugador) < 3) & (Math.random() > 0.97)) {
+            disparar();
+        }
+
     }
-    
+
 }

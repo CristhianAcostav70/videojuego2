@@ -18,35 +18,49 @@ public class Cubo {
     Material material;
     Texture tex;
 
+    
+    /**\brief Constructor1 de la clase Cubo */
     public Cubo(GL gl) {
+        /**\param gl objeto de la libreria OpenGl*/
         this.gl = gl;
     }
 
+    /**\brief Constructor2 de la clase Cubo */
     public Cubo(GL gl, Material material, Texture tex) {
+        /**\param gl objeto de la libreria OpenGl*/
         this.gl = gl;
+        /**\param matetrial. ingresamos el material de la clase material*/
         this.material = material;
+        /**\param Textura. ingresamos la textura de la clase textura*/
         this.tex = tex;
     }
 
+    /**\brief Constructor3 de la clase Cubo */
     public Cubo(GL gl, Texture tex) {
+        /**\param gl objeto de la libreria OpenGl*/
         this.gl = gl;
+        /**\param Textura. ingresamos la textura de la clase textura*/
         this.tex = tex;
     }
     
-
+    /**\brief Constructor4 de la clase Cubo */
     public Cubo(GL gl1, Material mat) {
+        /**\param gl objeto de la libreria OpenGl*/
         this.gl = gl1;
+        /**\param matetrial. ingresamos el material de la clase material*/
         this.material=mat;
     }
 
+    
+     /**\brief Método para dibujar los edificios*/
     public void draw() {
-        //FRONT
         
+        ///si el material es distinto de null se activa
         if (material !=null){
         material.activar();
         }
         
-
+        ///si l atextura es diferente de null se activa
         if(tex!=null){
          
         tex.enable();

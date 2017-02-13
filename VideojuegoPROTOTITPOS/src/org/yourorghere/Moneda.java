@@ -11,10 +11,11 @@ import javax.media.opengl.GL;
  *
  * @author crisspc
  */
+
+/**\brief Clase moneda impementa la interfaz Movil*/
 public class Moneda  implements Movil {
      GL gl;   
     Cubo bloque;
-    
     float x;
     float y;
     float z;
@@ -22,6 +23,7 @@ public class Moneda  implements Movil {
     public boolean alive=true;
     
 
+    /**\brief contructor de la clase Moneda*/
     public Moneda(GL gl1,float x1, float y1, float z1, float angley1) {
         this.gl = gl1;
         this.x=x1;
@@ -36,18 +38,13 @@ public class Moneda  implements Movil {
     }
 
    
-
+    /**\brief Método para dibujar las monedas*/
     public void draw() {
         if(this.alive){
-
-      //  gl.glColor3f(0.5f, 0.3f, 0);
         gl.glPushMatrix();
-        //gl.glTranslatef(0, 1, 0);
-        gl.glScalef(0.1f, 0.1f, 0.1f);
-        
+        gl.glScalef(0.1f, 0.1f, 0.1f);  
         bloque.draw();
-        gl.glPopMatrix();
-        
+        gl.glPopMatrix(); 
         }  
     }
     
@@ -66,6 +63,7 @@ public class Moneda  implements Movil {
         return 1f;
     }
     
+    ///Si una moneda es colisionada esta modena desaparece.
     public void die(){
     if(alive){
         this.alive = false;

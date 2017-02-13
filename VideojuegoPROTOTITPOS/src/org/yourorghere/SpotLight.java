@@ -12,12 +12,16 @@ import javax.media.opengl.GL;
  *
  * @author LABCOM
  */
+
+
+/**\brief Clase SpotLight extiene de la clase Light */
 public class SpotLight extends Light{
 
      float cutoff;
     float exponent;
     float[] direction;
 
+        /**\brief constructor de la clase SpotLight*/
     public SpotLight(GL gl1, float x1, float y1, float z1, float[] a, float[] d, float[] s, boolean p, int id1) {
         super(gl1, x1, y1, z1, a, d, s, p, id1);
         cutoff = 45;
@@ -40,7 +44,8 @@ public class SpotLight extends Light{
     public void setDirection(float[] direction) {
         this.direction = direction;
     }
-
+/// metodo activa la luz direccional
+    
     public void activate() {
         super.activate();
         gl.glLightf(id, GL.GL_SPOT_CUTOFF, cutoff);
@@ -50,7 +55,7 @@ public class SpotLight extends Light{
     }
 
     
-
+///método activa la luz direcional qeu tiene la posicion de los personaje
     public void activate_p(Personaje p) {
         super.activate();
         float[] direction_p = {p.x + (float) Math.toDegrees(Math.cos(p.angley)),0, p.z + (float) Math.toDegrees(Math.sin(p.angley)), 1.0f};
@@ -63,6 +68,7 @@ public class SpotLight extends Light{
 
     }
     
+    ///método desactiva la luz direcional qeu tiene la posicion de los personaje
      public void dactivate_p(Personaje p) {
         super.dactivate();
         float[] direction_p = {p.x + (float) Math.toDegrees(Math.cos(p.angley)),0, p.z + (float) Math.toDegrees(Math.sin(p.angley)), 1.0f};

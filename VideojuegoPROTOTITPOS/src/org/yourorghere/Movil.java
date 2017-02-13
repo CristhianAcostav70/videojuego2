@@ -9,10 +9,17 @@ package org.yourorghere;
  *
  * @author crisspc
  */
+
+
+/**\brief Declaramos la interfaz Movil*/
 public interface Movil {
+    /**param metodo getX*/
     public float getX();
+    /**param metodo getY*/
     public float getY();
+    /**param metodo getZ*/
     public float getZ();
+    /**param metodo getWidth*/
     public float getWidth();
     
     

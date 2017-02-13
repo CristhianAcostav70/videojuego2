@@ -13,11 +13,11 @@ import javax.media.opengl.GL;
  * @author crisspc
  */
 
-/**\brief Constructor de la clase Barrio2 */
+
 public class Barrio2 {
 
     GL gl;
-//    Casa casa1;
+
     
     ///Creamos un arreglo de casas donde vamos a guardar, las casas y sus respetivas posiciones.
     ArrayList<Casa> casas = new ArrayList();
@@ -26,9 +26,13 @@ public class Barrio2 {
     float[] posz = new float[13];
     float[] angley = new float[13];
 
+    /**\brief Constructor de la clase Barrio2 */
     public Barrio2(GL gl) {
+        
+        /**\param gl objeto de la libreria OpenGl*/
         this.gl = gl;
 
+        /// colocamos las posiciones en cada arreglo. Que asignaremos a las casas.
         posx[0] = 0;
         posx[1] = 3f;
         posx[2] = 6f;
@@ -72,22 +76,7 @@ public class Barrio2 {
         posz[11] = 5f;
         posz[12] = 5f;
         
-        
-        
-//         posz[0] = 0.1f;
-//        posz[1] = 0.1f;
-//        posz[2] = 0.1f;
-//        posz[3] = 0.1f;
-//        posz[4] = 0.1f;
-//        posz[5] = 3f;
-//        posz[6] = 6f;
-//        posz[7] = 9f;
-//        posz[8] = 11f;
-//        posz[9] = 11f;
-//        posz[10] = 11f;
-//        posz[11] = 11f;
-//        posz[12] = 11f;
-        
+       
         
         angley[0] = 0;
         angley[1] = 0;
@@ -103,6 +92,8 @@ public class Barrio2 {
         angley[11] = 180;
         angley[12] = 180;
         
+        
+        ///recorremoas las posicones de los arreglos y los guardamos como atributos del objeto casas en el arreglo.
         for (int i = 0; i < 13; i++) {
             casas.add(new Casa(gl, posx[i], posy[i], posz[i], angley[i]));
 
@@ -111,7 +102,9 @@ public class Barrio2 {
     }
     
     
+    /**\brief Método para dibujar las casas*/
      public void draw() {
+         ///Recorremos el arreglo de casas para graficárlas.
         for (Casa casa : casas) {
             gl.glPushMatrix();
             gl.glTranslatef(casa.x, casa.y, casa.z);

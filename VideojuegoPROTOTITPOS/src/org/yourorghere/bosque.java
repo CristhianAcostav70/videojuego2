@@ -17,11 +17,15 @@ public class bosque {
     
     
     
+    /**\breif Constructor de la clase bosque*/
     public bosque(GL gl1) {
+       
         this.gl = gl1;
         arbolcr=new arbol(gl);
         
     }
+    
+    /**\breif Metodo Draw para graficar el bosque*/
     public void draw(){
      gl.glPushMatrix();
       arbolcr.draw();

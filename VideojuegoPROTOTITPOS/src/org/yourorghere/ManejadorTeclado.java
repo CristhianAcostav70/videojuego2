@@ -14,6 +14,8 @@ import javax.media.opengl.glu.GLU;
  *
  * @author LABCOM
  */
+
+/**\brief Clase ManejadorRaton implementa la interfaz KeyListener*/
 public class ManejadorTeclado implements KeyListener {
 
     Personaje movil;
@@ -22,6 +24,7 @@ public class ManejadorTeclado implements KeyListener {
     SpotLight linterna;
     GLU glu = new GLU();
 
+    /**\brief contructor de la claseManejadorTeclado*/
     public ManejadorTeclado(Personaje movil, Practica1PG principal, Light luz, SpotLight linterna) {
         this.movil = movil;
         this.principal = principal;
@@ -29,6 +32,8 @@ public class ManejadorTeclado implements KeyListener {
         this.linterna = linterna;
     }
 
+    ///para cada pulsacion de tecla asignamos un evento.
+    /// desde aqui manejamos las camaras y las luces.
     public void keyTyped(KeyEvent e) {
         if (e.getKeyChar() == 'w') {
             this.movil.avanzar();

@@ -21,6 +21,8 @@ public class messilla {
         mes = new meza(gl);
         sill = new silla(gl);
     }
+    
+    ///Métdodo Draw para graficar los muebles
      public void draw(){
      
          gl.glPushMatrix();
